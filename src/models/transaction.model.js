@@ -9,7 +9,7 @@ const transactionSchmea = new mongoose.Schema({
         index: true
     },
     toAccount:{
-        type: mongoose.Shcmea.Types.Objectid,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "account",
         required: [true, "Transaction must be associated with a to account"],
         index: true,
