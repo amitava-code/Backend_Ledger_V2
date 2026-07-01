@@ -45,7 +45,13 @@ async function systemUserAuthMiddleware(req, res, next){
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
+        console.log("Decoded token userId:", decoded.userId)
+
         const user = await userModel.findById(decoded.userId).select("+systemUser")
+
+        console.log("User found:", user)
+        console.log("systemUser value:", user?.systemUser)
+        console.log("systemUser type:", typeof user?.systemUser)
 
         if(!user.systemUser){
             return res.status(403).json({
